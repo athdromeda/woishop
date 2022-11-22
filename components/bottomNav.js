@@ -1,21 +1,45 @@
+import Link from "next/link";
 import { HiOutlineCreditCard, HiOutlineHome } from "react-icons/hi";
 import {
   MdOutlineLiveHelp,
   MdOutlineNotifications,
   MdOutlineAccountCircle,
 } from "react-icons/md";
+import { IconContext } from "react-icons";
 
-export default function BottomNav() {
+const NavWrapper = ({ icon, label, activeTab, link }) => {
+  return (
+    <Link href={link}>
+      <IconContext.Provider value={{size: 20}}>
+        <div
+          className={
+            "flex flex-col items-center " +
+            (activeTab ? "text-woigreen" : "text-slate-400")
+          }
+        >
+          {icon}
+          <p className="text-xs">{label}</p>
+        </div>
+      </IconContext.Provider>
+    </Link>
+  );
+};
+
+export default function BottomNav({ activeTab = "" }) {
   return (
     <div className="p-2 pt-0 flex text-sm sticky bottom-0 bg-white justify-around items-end w-[360px] h-[52px]">
-      <div className="flex flex-col items-center">
-        <HiOutlineHome size={20} className="text-woigreen" />
-        <p className="text-xs text-woigreen">Beranda</p>
-      </div>
-      <div className="flex flex-col items-center">
-        <MdOutlineLiveHelp size={20} className="text-slate-400" />
-        <p className="text-xs text-slate-400">Bantuan</p>
-      </div>
+      <NavWrapper
+        icon={<HiOutlineHome/>}
+        label="Beranda"
+        link="/"
+        active={activeTab === "Beranda"}
+      />
+      <NavWrapper
+        icon={<MdOutlineLiveHelp/>}
+        label="Bantuan"
+        link="/help"
+        active={activeTab === "Bantuan"}
+      />
       <div className="relative">
         <div className="flex flex-col items-center">
           <div className="h-12 w-12  bg-woigreen flex items-center justify-center rounded-full border-4 border-white">
@@ -24,14 +48,18 @@ export default function BottomNav() {
           <p className="text-xs mt-0 text-slate-400">Transaksi</p>
         </div>
       </div>
-      <div className="flex flex-col items-center">
-        <MdOutlineNotifications size={20} className="text-slate-400" />
-        <p className="text-xs text-slate-400">Notifikasi</p>
-      </div>
-      <div className="flex flex-col items-center">
-        <MdOutlineAccountCircle size={20} className="text-slate-400" />
-        <p className="text-xs text-slate-400">Profil</p>
-      </div>
+      <NavWrapper
+        icon={<MdOutlineNotifications/>}
+        label="Notifikasi"
+        link="/notification"
+        active={activeTab === "Notifikasi"}
+      />
+      <NavWrapper
+        icon={<MdOutlineAccountCircle/>}
+        label="Profil"
+        link="/profile"
+        active={activeTab === "Profil"}
+      />
     </div>
   );
 }
