@@ -13,7 +13,7 @@ export default function Notification() {
       <main>
         <p className="mb-5 font-bold">Bantuan</p>
       </main>
-      <BottomNav />
+      <BottomNav active="/help"/>
     </div>
   );
 }

@@ -6,16 +6,19 @@ import {
   MdOutlineAccountCircle,
 } from "react-icons/md";
 import { IconContext } from "react-icons";
+import { useState } from "react";
 
-const NavWrapper = ({ icon, label, activeTab, link }) => {
+const NavWrapper = ({ icon, label, active, link, setActive }) => {
   return (
     <Link href={link}>
       <IconContext.Provider value={{size: 20}}>
         <div
           className={
             "flex flex-col items-center " +
-            (activeTab ? "text-woigreen" : "text-slate-400")
+            (active ? "text-woigreen" : "text-slate-400")
           }
+
+          onClick = {()=>setActive(link)}
         >
           {icon}
           <p className="text-xs">{label}</p>
@@ -25,20 +28,24 @@ const NavWrapper = ({ icon, label, activeTab, link }) => {
   );
 };
 
-export default function BottomNav({ activeTab = "" }) {
+export default function BottomNav({ active = "/" }) {
+  const [activeTab, setActiveTab] = useState(active)
+
   return (
     <div className="p-2 pt-0 flex text-sm sticky bottom-0 bg-white justify-around items-end w-[360px] h-[52px]">
       <NavWrapper
         icon={<HiOutlineHome/>}
         label="Beranda"
         link="/"
-        active={activeTab === "Beranda"}
+        active={activeTab === "/"}
+        setActive = {setActiveTab}
       />
       <NavWrapper
         icon={<MdOutlineLiveHelp/>}
         label="Bantuan"
         link="/help"
-        active={activeTab === "Bantuan"}
+        active={activeTab === "/help"}
+        setActive = {setActiveTab}
       />
       <div className="relative">
         <div className="flex flex-col items-center">
@@ -52,13 +59,15 @@ export default function BottomNav({ activeTab = "" }) {
         icon={<MdOutlineNotifications/>}
         label="Notifikasi"
         link="/notification"
-        active={activeTab === "Notifikasi"}
+        active={activeTab === "/notification"}
+        setActive = {setActiveTab}
       />
       <NavWrapper
         icon={<MdOutlineAccountCircle/>}
         label="Profil"
         link="/profile"
-        active={activeTab === "Profil"}
+        active={activeTab === "/profile"}
+        setActive = {setActiveTab}
       />
     </div>
   );

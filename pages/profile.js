@@ -27,7 +27,7 @@ export default function Profile() {
         <LogoutButton />
         <AppVersion />
       </main>
-      <BottomNav />
+      <BottomNav active="/profile" />
     </div>
   );
 }

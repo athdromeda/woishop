@@ -44,7 +44,7 @@ export default function Notification() {
         ))}
       </main>
       <MarkReadButton />
-      <BottomNav />
+      <BottomNav active="/notification" />
     </div>
   );
 }

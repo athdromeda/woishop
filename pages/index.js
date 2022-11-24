@@ -26,7 +26,7 @@ export default function Home() {
         <Features />
         <Promos />
       </main>
-      <BottomNav />
+      <BottomNav active="/" />
     </div>
   );
 }
