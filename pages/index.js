@@ -35,13 +35,13 @@ const Carousel = () => {
   return (
     <div className="overflow-auto whitespace-nowrap pb-2">
       <div className="inline-block mr-2">
-        <Image src="/banner/1.png" width={280} height={160} />
+        <Image src="/banner/1.png" width={280} height={160} alt="banner" />
       </div>
       <div className="inline-block mx-2">
-        <Image src="/banner/1.png" width={280} height={160} />
+        <Image src="/banner/1.png" width={280} height={160} alt="banner" />
       </div>
       <div className="inline-block ml-2">
-        <Image src="/banner/1.png" width={280} height={160} />
+        <Image src="/banner/1.png" width={280} height={160} alt="banner" />
       </div>
     </div>
   );
