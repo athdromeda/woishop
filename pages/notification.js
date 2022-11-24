@@ -22,7 +22,7 @@ const notifications = [
 ];
 
 export default function Notification() {
-  const [notif, setNotif] = useState(notifications)
+  const [notif, setNotif] = useState(notifications);
 
   return (
     <div>
@@ -34,8 +34,9 @@ export default function Notification() {
 
       <main>
         <p className="mb-5 font-bold">Notifikasi</p>
-        {notif.map((e) => (
+        {notif.map((e,i) => (
           <NotificationItem
+            key={i}
             date={e.date}
             title={e.title}
             caption={e.caption}
